@@ -7,51 +7,46 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.codingwithmitch.espressouitestexamples.R
 import org.junit.Test
-
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-class MainActivityTest{
-
+class MainActivityTest {
     @Test
-    fun testActivity_inView() {
+    fun test_isActivityInView() {
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
-        onView(withId(R.id.main)).check(matches(isDisplayed()))
-    }
-
-    // Visibility
-    @Test
-    fun testVisibility_title_nextButton() {
-        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-
-        onView(withId(R.id.activity_main_title))
-            .check(matches(isDisplayed())) // method 1
-
-        onView(withId(R.id.activity_main_title))
-            .check(matches(withEffectiveVisibility(Visibility.VISIBLE))) // method 2
-
-        onView(withId(R.id.button_next_activity))
+        //проверка отображения MainActivity
+        onView(withId(R.id.main))
             .check(matches(isDisplayed()))
     }
 
-    // Text
     @Test
-    fun testTitleTextDisplayed() {
+    fun test_visibility_title_nextButton() {
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
+        //Проверка отображения кнопки next activity
+        onView(withId(R.id.button_next_activity))
+            .check(matches(isDisplayed()))
+
+        //region method 2
+        //onView(withId(R.id.button_next_activity))
+        //    .check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
+        //endregion
+
+        //Проверка отображения главного текста в activity
         onView(withId(R.id.activity_main_title))
-            .check(matches(withText(R.string.text_mainactivity)))
+            .check(matches(isDisplayed()))
     }
 
+    @Test
+    fun test_isTitleTextDisplayed() {
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+
+        //проверка совпадения текста на экране
+        onView(withId(R.id.activity_main_title))
+            .check(matches(withText("MainActivity")))
+    }
 }
-
-
-
-
-
-
-
 
 
 

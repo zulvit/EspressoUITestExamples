@@ -1,7 +1,7 @@
 package com.codingwithmitch.espressouitestexamples.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.codingwithmitch.espressouitestexamples.R
 import kotlinx.android.synthetic.main.activity_secondary.*
 
